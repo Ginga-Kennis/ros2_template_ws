@@ -14,6 +14,7 @@ xhost +local:
 docker run -it \
     -e DISPLAY=$DISPLAY \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
+    --device=/dev/dri \
     -v /PATH/TO/ros2_template_ws:/root/ros2_template_ws \
     --name ros2_template_ws_cont \
     ros2_template_ws_img 
