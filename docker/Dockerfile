@@ -12,8 +12,7 @@ RUN apt-get update && apt-get install -y \
 # 初期ディレクトリをルートディレクトリに設定
 WORKDIR /root
 
-# bash補完を有効にし、ROSのエントリポイントも.bashrcに追加
-RUN echo "source /ros_entrypoint.sh" >> /root/.bashrc 
+RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc 
 
 # コンテナ起動時にデフォルトでbashシェルを開く
 CMD ["bash"]
