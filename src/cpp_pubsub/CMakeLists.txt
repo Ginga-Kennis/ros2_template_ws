@@ -10,10 +10,13 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
+# ヘッダーファイルのディレクトリを追加
+include_directories(include)
+
 # add executable so you can run your node using ros2 run
-add_executable(talker src/publisher_member_function.cpp)
+add_executable(talker src/minimal_publisher.cpp)
 ament_target_dependencies(talker rclcpp std_msgs)
-add_executable(listener src/subscriber_member_function.cpp)
+add_executable(listener src/minimal_subscriber.cpp)
 ament_target_dependencies(listener rclcpp std_msgs)
 
 # so ros2 run can find your executable
