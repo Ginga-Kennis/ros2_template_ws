@@ -1,14 +1,18 @@
-version: "3"
 services:
   ros2_template_ws: 
     container_name: ros2_template_ws_cont
     image: ros2_template_ws_img  
     build:  
       context: .  
+      args:
+        USERNAME: oinarisan
+        USER_UID: 1000
+        USER_GID: 1000
     environment:  
       - DISPLAY=${DISPLAY}  
     volumes:  
       - /tmp/.X11-unix:/tmp/.X11-unix  
-      - /PATH/TO/ros2_template_ws:/root/ros2_template_ws  
+      - /home/oinarisan/ros2_template_ws:/home/oinarisan/ros2_template_ws  
     stdin_open: true  
     tty: true 
+    user: "1000:1000" 
