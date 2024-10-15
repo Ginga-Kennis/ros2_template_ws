@@ -5,7 +5,7 @@ xhost +local:
 ```
 
 # Dockerコンテナの作成 & 起動
-- `docker-compose.yml` 内の /PATH/TO/ros2_template_ws をホストマシン上の ros2_template_ws の絶対パスに置き換えてください
+- `docker-compose.yml` 内の指定された箇所の変更が必要
 ```
 docker compose up -d
 ```

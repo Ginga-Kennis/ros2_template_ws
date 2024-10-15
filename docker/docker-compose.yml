@@ -1,18 +1,17 @@
 services:
   ros2_template_ws: 
-    container_name: ros2_template_ws_cont
-    image: ros2_template_ws_img  
+    container_name: ros2_template_ws_cont  
     build:  
       context: .  
       args:
-        USERNAME: oinarisan
+        USERNAME: oinarisan # ローカルのユーザー名に変更
         USER_UID: 1000
         USER_GID: 1000
     environment:  
       - DISPLAY=${DISPLAY}  
     volumes:  
       - /tmp/.X11-unix:/tmp/.X11-unix  
-      - /home/oinarisan/ros2_template_ws:/home/oinarisan/ros2_template_ws  
+      - /home/oinarisan/ros2_template_ws:/home/oinarisan/ros2_template_ws  # ローカルの ros2_template_ws の絶対パスに変更
     stdin_open: true  
     tty: true 
     user: "1000:1000" 
