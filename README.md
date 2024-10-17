@@ -24,5 +24,13 @@ colcon build [オプション]
 | `--packages-select PKG`   | 指定したPKGパッケージのみをビルド               |
 | `--packages-skip PKG`    | 指定したPKGパッケージをスキップしてビルド         |
 
+環境のソース
+```bash
+source install/setup.bash
+```
+| オプション              | 説明                                          |
+|-------------------------|---------------------------------------------|
+| `install/steup.bash`      |  underlay + overlay |
+| `install/local_steup.bash`   | overlay |
 
 
