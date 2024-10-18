@@ -2,6 +2,7 @@
 
 AddTwoIntsServer::AddTwoIntsServer() : Node("add_two_ints_server")
 {
+  // std::placeholders::_1 & std::placeholders::_2 for input of two numbers
   service_ = this->create_service<example_interfaces::srv::AddTwoInts>("add_two_ints", 
     std::bind(&AddTwoIntsServer::add, this, std::placeholders::_1, std::placeholders::_2));
 
@@ -19,7 +20,7 @@ void AddTwoIntsServer::add(const std::shared_ptr<example_interfaces::srv::AddTwo
 int main(int argc, char **argv)
 {
   rclcpp::init(argc, argv);
-  auto node = std::make_shared<AddTwoIntsServer>();
-  rclcpp::spin(node);
+  rclcpp::spin(std::make_shared<AddTwoIntsServer>());
   rclcpp::shutdown();
+  return 0;
 }

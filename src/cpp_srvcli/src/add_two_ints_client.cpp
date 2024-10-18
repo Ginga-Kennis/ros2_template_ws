@@ -1,9 +1,6 @@
 #include "cpp_srvcli/add_two_ints_client.hpp"
 
-using namespace std::chrono_literals;
-
-AddTwoIntsClient::AddTwoIntsClient()
-: Node("add_two_ints_client")
+AddTwoIntsClient::AddTwoIntsClient() : Node("add_two_ints_client")
 {
     client_ = this->create_client<example_interfaces::srv::AddTwoInts>("add_two_ints");
 }
@@ -14,8 +11,7 @@ bool AddTwoIntsClient::send_request(int64_t a, int64_t b)
     request->a = a;
     request->b = b;
 
-    // サービスが利用可能かどうかを確認
-    while (!client_->wait_for_service(1s)) {
+    while (!client_->wait_for_service(std::chrono::seconds(1))) {
         if (!rclcpp::ok()) {
             RCLCPP_ERROR(this->get_logger(), "Interrupted while waiting for the service. Exiting.");
             return false;
@@ -23,10 +19,8 @@ bool AddTwoIntsClient::send_request(int64_t a, int64_t b)
         RCLCPP_INFO(this->get_logger(), "service not available, waiting again...");
     }
 
-    // リクエストを非同期で送信
     auto result = client_->async_send_request(request);
 
-    // 結果を待機
     if (rclcpp::spin_until_future_complete(this->shared_from_this(), result) == 
         rclcpp::FutureReturnCode::SUCCESS) {
         RCLCPP_INFO(this->get_logger(), "Sum: %ld", result.get()->sum);
@@ -37,7 +31,7 @@ bool AddTwoIntsClient::send_request(int64_t a, int64_t b)
     }
 }
 
-int main(int argc, char **argv)
+int main(int argc, char * argv[])
 {
     rclcpp::init(argc, argv);
 
