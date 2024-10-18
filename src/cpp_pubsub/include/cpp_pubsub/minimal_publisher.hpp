@@ -11,8 +11,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-using namespace std::chrono_literals;
-
 // Create the node class MinimalPublihser by inheriting from rclcpp::Node
 class MinimalPublisher : public rclcpp::Node
 {

@@ -6,7 +6,7 @@ MinimalPublisher::MinimalPublisher() : Node("minimal_publisher"), count_(0)
   // Initialize publisher (message type : String, topic name : "topic", queue size : 10)
   publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
   // Initialize timer, which causes the timer_callback function to be executed twice a second
-  timer_ = this->create_wall_timer(500ms, std::bind(&MinimalPublisher::timer_callback, this));
+  timer_ = this->create_wall_timer(std::chrono::milliseconds(500), std::bind(&MinimalPublisher::timer_callback, this));
 }
 
 // Set and publish messages
