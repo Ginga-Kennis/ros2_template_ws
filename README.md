@@ -64,6 +64,10 @@ ros2 pkg create --build-type ament_python --license Apache-2.0 <package_name>
 
 シンプルなPublish & Subscribeの実装は、[cpp_pubsub](./src/cpp_pubsub)ディレクトリを参照してください。  
 
-### 3. Service & Client
+### 4. Service & Client
 
-シンプルなService & Clientの実装は、[cpp_srvcli](./src/cpp_srvcli)ディレクトリを参照してください。  
+シンプルなService & Clientの実装は、[cpp_srvcli](./src/cpp_srvcli)ディレクトリを参照してください。 
+
+### 5. Parameters
+
+Parameterを使用したノードの実装は、[cpp_parameters](./src/cpp_parameters)ディレクトリを参照してください。
