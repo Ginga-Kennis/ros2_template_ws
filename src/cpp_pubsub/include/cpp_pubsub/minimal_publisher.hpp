@@ -1,20 +1,23 @@
 #ifndef MINIMAL_PUBLISHER_HPP_
 #define MINIMAL_PUBLISHER_HPP_
 
+// Standard C++ headers
 #include <chrono>
 #include <functional>
 #include <memory>
 #include <string>
 
+// ROS related headers
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
 using namespace std::chrono_literals;
 
+// Create the node class MinimalPublihser by inheriting from rclcpp::Node
 class MinimalPublisher : public rclcpp::Node
 {
 public:
-  MinimalPublisher();
+  MinimalPublisher(); 
 
 private:
   void timer_callback();

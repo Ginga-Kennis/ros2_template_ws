@@ -11,18 +11,18 @@ launchファイルやサービス、トピックなど、ROS2のさまざまな�
 ### 1. ワークスペースの作成 & ビルド
 ワークスペースの作成
 ```bash
-mkdir -p ~/ros2_ws/src
+mkdir -p ~/ros2_template_ws/src
 ```
 ワークスペースのビルド
 ```bash
-cd ~/ros2_ws
+cd ~/ros2_template_ws
 colcon build [オプション]
 ```
 | オプション              | 説明                                          |
 |-------------------------|---------------------------------------------|
 | `--symlink-install`      | Pythonファイルやリソースを変更した際にビルドが不要 |
-| `--packages-select PKG`   | 指定したPKGパッケージのみをビルド               |
-| `--packages-skip PKG`    | 指定したPKGパッケージをスキップしてビルド         |
+| `--packages-select PKG`   | 指定したパッケージのみをビルド               |
+| `--packages-skip PKG`    | 指定したパッケージをスキップしてビルド         |
 
 環境のソース
 ```bash
@@ -33,4 +33,34 @@ source install/setup.bash
 | `install/steup.bash`      |  underlay + overlay |
 | `install/local_steup.bash`   | overlay |
 
+### 2. パッケージの作成
+c++パッケージ
+```bash
+cd ~/ros2_template_ws/src
+ros2 pkg create --build-type ament_cmake --license Apache-2.0 <package_name>
+```
+| 項目                     | 説明                                                  |
+|--------------------------|-------------------------------------------------------|
+| **CMakeLists.txt**        | パッケージ内のコードをビルドする方法を記述したファイル                   |
+| **include/<package_name>**| パッケージのヘッダーを含むディレクトリ                        |
+| **package.xml**           | パッケージに関するメタ情報を含むファイル                       |
+| **src**                   | パッケージのソースコードを含むディレクトリ                       |
 
+pythonパッケージ
+```bash
+cd ~/ros2_template_ws/src
+ros2 pkg create --build-type ament_python --license Apache-2.0 <package_name>
+```
+| 項目                          | 説明                                                                |
+|-------------------------------|---------------------------------------------------------------------|
+| **package.xml**                | パッケージに関するメタ情報を含むファイル                                        |
+| **resource/<package_name>**     | パッケージのマーカーを含むディレクトリ                                        |
+| **setup.cfg**                  | パッケージに実行可能ファイルがある場合、`ros2 run` で認識できるようにするために必要なファイル |
+| **setup.py**                   | パッケージのインストール方法を指示するファイル                                    |
+| **<package_name>**             | パッケージと同じ名前のディレクトリで、`__init__.py` を含み、ソースコードを格納するディレクトリ |
+
+
+### 3. シンプルなPublish & Subscribe
+
+シンプルなPublish & Subscribeの実装は、[cpp_pubsub](./src/cpp_pubsub)ディレクトリを参照してください。  
+このディレクトリには、ROS 2の基本的なPublisherとSubscriberのC++実装が含まれています。
