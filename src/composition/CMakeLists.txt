@@ -27,10 +27,34 @@ rclcpp_components_register_node(
     EXECUTABLE talker
 )
 
+add_library(listener_component SHARED
+  src/listener_component.cpp
+)
+# listener_componentの依存関係を設定
+ament_target_dependencies(listener_component
+  rclcpp
+  rclcpp_components
+  std_msgs
+)
+# listener_componentをコンポーネントとして登録し、別名"listener"で実行できるようする
+rclcpp_components_register_node(
+    listener_component
+    PLUGIN "composition::Listener"
+    EXECUTABLE listener
+)
+
 # talker_componentライブラリのインストール
 install(
   TARGETS talker_component
   EXPORT export_talker_component
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+
+install(
+  TARGETS listener_component
+  EXPORT export_listener_component
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin

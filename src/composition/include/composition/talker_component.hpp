@@ -1,5 +1,5 @@
-#ifndef COMPOSITION__COMPOSITION_HPP_
-#define COMPOSITION__COMPOSITION_HPP_
+#ifndef COMPOSITION__TALKER_COMPONENT_HPP_
+#define COMPOSITION__TALKER_COMPONENT_HPP_
 
 #include <chrono>
 #include "rclcpp/rclcpp.hpp"
@@ -26,4 +26,4 @@ private:
 
 } // namespace composition
 
-#endif  // COMPOSITION__COMPOSITION_HPP_
+#endif  // COMPOSITION__TALKER_COMPONENT_HPP_

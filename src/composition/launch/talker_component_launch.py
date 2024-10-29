@@ -12,7 +12,11 @@ def generate_launch_description():
                 ComposableNode(
                     package='composition',
                     plugin='composition::Talker',
-                    name='talker')
+                    name='talker'),
+                ComposableNode(
+                    package='composition',
+                    plugin='composition::Listener',
+                    name='listener')
             ],
             output='screen',
     )
