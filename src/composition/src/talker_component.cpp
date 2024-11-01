@@ -6,10 +6,13 @@ namespace composition
 Talker::Talker(const rclcpp::NodeOptions & options) : Node("talker", options), count_(0)
 {
     pub_ = create_publisher<std_msgs::msg::String>("chatter", 10);
-    timer_ = create_wall_timer(std::chrono::seconds(1), [this]() {return this->on_timer();});
+    timer_ = create_wall_timer(
+        std::chrono::milliseconds(10), 
+        std::bind(&Talker::timer_callback, this)
+    );
 }
 
-void Talker::on_timer()
+void Talker::timer_callback()
 {
     auto msg = std::make_unique<std_msgs::msg::String>();
     msg->data = "Hello World: " + std::to_string(++count_);

@@ -44,17 +44,9 @@ rclcpp_components_register_node(
 )
 
 # talker_componentライブラリのインストール
-install(
-  TARGETS talker_component
-  EXPORT export_talker_component
-  ARCHIVE DESTINATION lib
-  LIBRARY DESTINATION lib
-  RUNTIME DESTINATION bin
-)
-
-install(
-  TARGETS listener_component
-  EXPORT export_listener_component
+install(TARGETS 
+  talker_component
+  listener_component
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin

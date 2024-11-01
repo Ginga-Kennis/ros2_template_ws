@@ -2,6 +2,7 @@
 #define COMPOSITION__LISTENER_COMPONENT_HPP_
 
 #include <chrono>
+#include <functional>
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 #include "composition/visibility_control.h"
@@ -16,7 +17,7 @@ public:
   explicit Listener(const rclcpp::NodeOptions & options);
 
 private:
-  void topic_callback(const std_msgs::msg::String & msg) const;
+  void topic_callback(const std_msgs::msg::String & msg);
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr sub_;
 };
 
